@@ -10,10 +10,11 @@ class FanficModel {
 
     // Model para criar Fanfics
     public function criarFanfic($imagem, $titulo, $sinopse, $categoria_id) {
-        $nome_usuario = $_SESSION['usuarioNomedeUsuario'];
-        $sql = "INSERT INTO fanfic (imagem, titulo, sinopse, categoria_id, nome_user) VALUES (?, ?, ?, ?, ?)";
+        $nome_user = $_SESSION['usuarioNomedeUsuario'];
+        $user_id = $_SESSION['usuarioId'];
+        $sql = "INSERT INTO fanfic (imagem, titulo, sinopse, categoria_id, nome_user, user_id) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$imagem, $titulo, $sinopse, $categoria_id, $nome_usuario]);
+        $stmt->execute([$imagem, $titulo, $sinopse, $categoria_id, $nome_user, $user_id]);
     }
 
     // Model para listar Fanfics
