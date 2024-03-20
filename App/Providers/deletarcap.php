@@ -1,9 +1,15 @@
 <?php
 include '../../Config/config.php';
+require_once '../../App/Controller/FanficController.php';
+
+$fanficController = new FanficController($pdo);
+$fanfics = $fanficController->listarFanfics($_SESSION['usuarioId']);
 
 if (!isset($_GET['id'])) { 
-    header('Location: ../../Public/User/capview.php');
-    exit;
+    foreach ($fanfics as $fanfic) {
+        header("Location: ../../Public/User/capview.php?fanfic_id={$fanfic['fanfic_id']}");
+        exit;
+    }
 }
 $id_capitulo = $_GET['id'];
 $stmt = $pdo->prepare('SELECT * FROM capitulos WHERE id_capitulo = ?');
@@ -11,16 +17,20 @@ $stmt->execute ([$id_capitulo]);
 $appointment = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$appointment) {
-    header('Location: ../../Public/User/capview.php');
-    exit;
+    foreach ($fanfics as $fanfic) {
+        header("Location: ../../Public/User/capview.php?fanfic_id={$fanfic['fanfic_id']}");
+        exit;
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $pdo->prepare('DELETE FROM capitulos WHERE id_capitulo = ?');
     $stmt->execute([$id_capitulo]);
 
-    header('Location: ../../Public/User/capview.php');
-    exit;
+    foreach ($fanfics as $fanfic) {
+        header("Location: ../../Public/User/capview.php?fanfic_id={$fanfic['fanfic_id']}");
+        exit;
+    }
 }
 ?>
 <!DOCTYPE html>

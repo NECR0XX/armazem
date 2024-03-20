@@ -5,9 +5,8 @@ require_once '../../App/Controller/CapController.php';
 $capController = new CapController($pdo);
 
 if (!isset($_GET['fanfic_id'])) {
-    // Redirecionar o usuário para uma página de erro ou exibir uma mensagem de erro
     echo "Parâmetro 'fanfic_id' não foi fornecido.";
-    exit(); // ou redirecione o usuário
+    exit();
 }
 
 $fanfic_id = $_GET['fanfic_id'];

@@ -15,11 +15,13 @@ class FanficController {
     }
 
     public function listarFanfics($user_id) {
-        $query = "SELECT * FROM fanfic WHERE user_id = :user_id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $fanfics = $this->fanficModel->listarFanfics($user_id);
+        return $fanfics;
+    }
+
+    public function listarFanficsPorCategoria($categoria_id) {
+        $fanfics = $this->fanficModel->listarFanficsPorCategoria($categoria_id);
+        return $fanfics;
     }
 
     public function exibirListaFanfics() {

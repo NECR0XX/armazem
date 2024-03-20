@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 class CapModel {
     private $pdo;
 

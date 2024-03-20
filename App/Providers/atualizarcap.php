@@ -1,52 +1,53 @@
 <?php
 include '../../Config/config.php';
+require_once '../../App/Controller/FanficController.php';
+
+$fanficController = new FanficController($pdo);
+$fanfics = $fanficController->listarFanfics($_SESSION['usuarioId']);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!isset($_GET['id'])) {
-        header('Location: ../../Public/User/perfil.php');
-        exit;
-    }
+        foreach ($fanfics as $fanfic) {
+            header("Location: ../../Public/User/capview.php?id_fanfic={$fanfic['id_fanfic']}");
+            exit;
+        }
+    }    
     
-    $id_fanfic = $_GET['id'];
+    $id_capitulo = $_GET['id'];
 
-    if (!empty($_FILES['nova_imagem']['tmp_name'])) {
-        $imagem = "../../Resources/Assets/Uploads/" . $_FILES['nova_imagem']['name'];
-        move_uploaded_file($_FILES['nova_imagem']['tmp_name'], $imagem);
-    } else {
-        $stmt = $pdo->prepare('SELECT imagem FROM fanfic WHERE id_fanfic = ?');
-        $stmt->execute([$id_fanfic]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $imagem = $result['imagem'];
-    }
-
+    $cap = $_POST['cap'];
     $titulo = $_POST['titulo'];
-    $sinopse = $_POST['sinopse'];
+    $texto = $_POST['texto'];
 
-    $stmt = $pdo->prepare('UPDATE fanfic SET imagem = ?, titulo = ?, sinopse = ? WHERE id_fanfic = ?');
-    $stmt->execute([$imagem, $titulo, $sinopse, $id_fanfic]);
-    header('Location: ../../Public/User/perfil.php');
+    $stmt = $pdo->prepare('UPDATE capitulos SET cap = ?, titulo = ?, texto = ? WHERE id_capitulo = ?');
+    $stmt->execute([$cap, $titulo, $texto, $id_capitulo]);
+    header("Location: ../../Public/User/capview.php?fanfic_id={$fanfic['id_capitulo']}");
     exit;
 }
 
 if (!isset($_GET['id'])) {
-    header('Location: ../../Public/User/perfil.php');
-    exit;
+    foreach ($fanfics as $fanfic) {
+        header("Location: ../../Public/User/capview.php?id_fanfic={$fanfic['id_fanfic']}");
+        exit;
+    }
 }
 
-$id_fanfic = $_GET['id'];
+$id_capitulo = $_GET['id'];
 
-$stmt = $pdo->prepare('SELECT * FROM fanfic WHERE id_fanfic = ?');
-$stmt->execute([$id_fanfic]);
+$stmt = $pdo->prepare('SELECT * FROM capitulos WHERE id_capitulo = ?');
+$stmt->execute([$id_capitulo]);
 $appointment = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$appointment) {
-    header('Location: ../../Public/User/perfil.php');
-    exit;   
+    foreach ($fanfics as $fanfic) {
+        header("Location: ../../Public/User/capview.php?id_fanfic={$fanfic['id_fanfic']}");
+        exit;
+    }
 }
 
-$imagem = $appointment['imagem'];
-$titulo = $appointment['titulo'];   
-$sinopse = $appointment['sinopse'];
+$cap = $appointment['cap'];   
+$titulo = $appointment['titulo'];
+$texto = $appointment['texto'];
 ?>
 
 <!DOCTYPE html>
@@ -62,15 +63,17 @@ $sinopse = $appointment['sinopse'];
 <body>
     
 <h1>Atualizar Conta</h1>
-<form method="post" enctype="multipart/form-data">
-    <label for="imagem">Imagem:</label>
-    <input type="file" name="nova_imagem" accept="image/*"><br>
+<form method="post">
+    <label for="cap">Capítulo:</label>
+    <input type="text" name="cap" value="<?php echo $cap; ?>" required><br>
 
     <label for="titulo">Título:</label>
-    <input type="text" name="titulo" value="<?php echo $titulo; ?>" required></br>
+    <input type="text" name="titulo" value="<?php echo $titulo; ?>" required><br>
 
-    <label for="sinopse">Sinopse:</label>
-    <textarea name="sinopse" required><?php echo $sinopse; ?></textarea></br></br>
+    <label for="texto">Texto:</label>
+    <textarea name="texto" required><?php echo $texto; ?></textarea><br>
+
+
 
     <button type="submit">Atualizar</button>
 </form>

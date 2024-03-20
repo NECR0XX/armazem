@@ -18,10 +18,21 @@ class FanficModel {
     }
 
     // Model para listar Fanfics
-    public function listarFanfics() {
-        $sql = "SELECT * FROM fanfic";
-        $stmt = $this->pdo->query($sql);
+    public function listarFanfics($user_id) {
+        $query = "SELECT * FROM fanfic WHERE user_id = :user_id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function listarFanficsPorCategoria($categoria_id) {
+        $sql = "SELECT * FROM fanfic WHERE categoria_id = :categoria_id";
+        $sql = "SELECT * FROM fanfic WHERE categoria_id = :categoria_id ORDER BY titulo ASC";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':categoria_id', $categoria_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }    
 }
 ?>
