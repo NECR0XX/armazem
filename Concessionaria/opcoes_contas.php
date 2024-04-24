@@ -1,40 +1,41 @@
-<h2>Excluir</h2>
-    <form method="post">
-        <select name="excluir_id_frota">
-            <?php foreach ($frotas as $frota): ?>
-                <option value="<?php echo $frota['id_frota']; ?>"><?php echo $frota['marca_modelo']; ?></option>
+<fieldset>
+        <legend><h2>Lista de contas</h2></legend>
+            <ul>
+            <?php foreach ($contas as $conta): ?>
+                <li>ID: <?php echo $conta['id_conta']; ?> - Fornecedores: <?php echo $conta['fornecedores']; ?> - Salários e Benefícios: <?php echo $conta['salarios_benef']; ?> - Aluguel: <?php echo $conta['aluguel']; ?> - Contas Públicas: <?php echo $conta['contas_publicas']; ?> - Impostos: <?php echo $conta['impostos']; ?> - Empréstimos: <?php echo $conta['emprestimos']; ?> - Manutenção: <?php echo $conta['manutencao']; ?> - Seguros: <?php echo $conta['seguros']; ?> - Marketing: <?php echo $conta['marketing']; ?> - Despesas Administrativas: <?php echo $conta['despesas_adm']; ?> - Logística: <?php echo $conta['logistica']; ?> - Pesquisa: <?php echo $conta['pesquisa']; ?> - Garantia: <?php echo $conta['garantia']; ?></li>
             <?php endforeach; ?>
+            </ul>
+    </fieldset>
+
+<h2>Atualizar conta</h2>
+    <form method="post">
+        <select name="id_conta">
+        <?php foreach ($contas as $conta): ?>
+            <option value="<?php echo $conta['id_conta']; ?>"><?php echo $conta['id_conta']; ?></option>
+        <?php endforeach; ?>
         </select>
-        <button type="submit">Excluir</button>
+                <input type="text" name="fornecedores_atualizar" placeholder="Novos Fornecedores">
+                <input type="text" name="salarios_benef_atualizar" placeholder="Novos Salários e Benefícios">
+                <input type="text" name="aluguel_atualizar" placeholder="Novo Aluguel">
+                <input type="text" name="contas_publicas_atualizar" placeholder="Novas Contas Públicas">
+                <input type="text" name="impostos_atualizar" placeholder="Novos Impostos">
+                <input type="text" name="emprestimos_atualizar" placeholder="Novos Empréstimos">
+                <input type="text" name="manutencao_atualizar" placeholder="Nova Manutenção">
+                <input type="text" name="seguros_atualizar" placeholder="Novos Seguros">
+                <input type="text" name="marketing_atualizar" placeholder="Novo Marketing">
+                <input type="text" name="despesas_adm_atualizar" placeholder="Novas Despesas Administrativas">
+                <input type="text" name="logistica_atualizar" placeholder="Nova Logística">
+                <input type="text" name="pesquisa_atualizar" placeholder="Nova Pesquisa">
+                <input type="text" name="garantia_atualizar" placeholder="Nova Garantia">
+                <button type="submit">Atualizar Conta</button>
     </form>
 
-    <h2>Atualizar</h2>
+    <h2>Excluir conta</h2>
     <form method="post">
-        <select name="id">
-            <?php foreach ($frotas as $frota): ?>
-                <option value="<?php echo $frota['id_frota']; ?>"><?php echo $frota['id_frota']; ?></option>
+        <select name="excluir_id_conta">
+            <?php foreach ($contas as $conta): ?>
+                <option value="<?php echo $conta['id_conta']; ?>"><?php echo $conta['id_conta']; ?></option>
             <?php endforeach; ?>
         </select>
-        <input type="text" name="atualizar_marca_modelo" placeholder="Nova Marca e Modelo" required>
-        <input type="number" name="atualizar_ano_fabricacao" placeholder="Novo Ano de Fabricação" required>
-        <input type="text" name="atualizar_placa" placeholder="Nova Placa" required>
-        <input type="text" name="atualizar_numero_chassi" placeholder="Novo Número do Chassi" required>
-        <input type="text" name="atualizar_tipo_veiculo" placeholder="Novo Tipo de Veículo" required>
-        <input type="text" name="atualizar_tipo_combustivel" placeholder="Novo Tipo de Combustível" required>
-        <input type="number" name="atualizar_quilometragem" placeholder="Nova Quilometragem" required>
-        <input type="date" name="atualizar_data_prox_rev" placeholder="Nova Próxima Revisão" required>
-        <input type="text" name="atualizar_historico_manutencao" placeholder="Novo Histórico de Manutenção" required>
-        <input type="text" name="atualizar_seguro" placeholder="Novo Seguro" required>
-        <input type="text" name="atualizar_documentacao" placeholder="Nova Documentação" required>
-        <input type="text" name="atualizar_localizacao_atual" placeholder="Nova Localização Atual" required>
-        <input type="text" name="atualizar_responsavel" placeholder="Novo Responsável" required>
-        <select name="atualizar_status" required>
-            <option value="">Status...</option>
-            <option value="Disponível">Disponível</option>
-            <option value="Ocupado">Ocupado</option>
-            <option value="Em Manutenção">Em Manutenção</option>
-        </select>
-        <textarea name="atualizar_observacoes" cols="30" rows="5" placeholder="Novas Observações" required></textarea>
-        <input type="text" name="atualizar_imagem" placeholder="Nova Imagem" required>
-        <button type="submit">Atualizar</button>
+        <button type="submit">Excluir conta</button>
     </form>
