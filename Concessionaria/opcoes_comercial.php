@@ -1,3 +1,4 @@
+<!-- FINALIZADO -->
 <h2>Excluir</h2>
     <form method="post">
         <select name="excluir_id_comercial">
@@ -10,7 +11,7 @@
 
     <h2>Atualizar</h2>
     <form method="post">
-        <select name="id">
+        <select name="id_comercial">
             <?php foreach ($comerciais as $comercial): ?>
                 <option value="<?php echo $comercial['id_comercial']; ?>"><?php echo $comercial['id_comercial']; ?></option>
             <?php endforeach; ?>
@@ -33,10 +34,9 @@
         <input type="text" name="atualizar_vendedor" placeholder="Vendedor" required>
         <select name="atualizar_estado_transacao" required>
             <option value="">Estado da Transação...</option>
-            <option value="Concluído">Concluído</option>
-            <option value="Pendente">Pendente</option>
-            <option value="Cancelado">Cancelado</option>
+            <option value="1">Aprovado</option>
+            <option value="2">Cancelado</option>
+            <option value="3">Em andamento</option>
         </select>
-        <textarea name="atualizar_observacoes" cols="30" rows="5" placeholder="Observações" required></textarea>
         <button type="submit">Atualizar</button>
     </form>
