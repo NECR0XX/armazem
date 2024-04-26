@@ -45,18 +45,20 @@ $fiscals = $fiscalController->listarFiscals();
 <body>
 <a href="opcoes.php">home</a>
 
-    <fieldset>
-        <legend><h2>Lista Fiscal</h2></legend>
-            <ul>
-            <?php foreach ($fiscals as $fiscal): ?>
-                <li>ID: <?php echo $fiscal['id_fiscal']; ?> - Data: <?php echo $fiscal['data']; ?> - Descrição: <?php echo $fiscal['descricao']; ?> 
-                - Valor: <?php echo $fiscal['valor']; ?> - Tipo: <?php echo $fiscal['tipo']; ?> - Cliente/Fornecedor: <?php echo $fiscal['cliente_fornecedor']; ?> 
-                - Nota Fiscal: <?php echo $fiscal['nota_fiscal']; ?> - Imposto: <?php echo $fiscal['imposto']; ?> - Método de Pagamento: <?php echo $fiscal['metodo_pagamento']; ?> 
-                - Código Fiscal: <?php echo $fiscal['codigo_fiscal']; ?> - Contas Contábeis: <?php echo $fiscal['contas_contabeis']; ?> - Localização: <?php echo $fiscal['localizacao']; ?> 
-                - Responsável: <?php echo $fiscal['responsavel']; ?> - Status: <?php echo $fiscal['status']; ?> - Observações: <?php echo $fiscal['observacoes']; ?></li>
-            <?php endforeach; ?>
-            </ul>
-    </fieldset>
+<fieldset>
+    <legend><h2>Lista Fiscal</h2></legend>
+        <ul>
+        <?php foreach ($fiscals as $fiscal): ?>
+            <li><strong>ID:</strong> <?php echo $fiscal['id_fiscal']; ?> - <strong>Data:</strong> <?php echo $fiscal['data']; ?> - <strong>Descrição:</strong> <?php echo $fiscal['descricao']; ?> 
+            - <strong>Valor:</strong> <?php echo $fiscal['valor']; ?> - <strong>Tipo:</strong> <?php echo $fiscal['tipo']; ?> - <strong>Cliente/Fornecedor:</strong> <?php echo $fiscal['cliente_fornecedor']; ?> 
+            - <strong>Nota Fiscal:</strong> <?php echo $fiscal['nota_fiscal']; ?> - <strong>Imposto:</strong> <?php echo $fiscal['imposto']; ?> - <strong>Método de Pagamento:</strong> <?php echo $fiscal['metodo_pagamento']; ?> 
+            - <strong>Código Fiscal:</strong> <?php echo $fiscal['codigo_fiscal']; ?> - <strong>Contas Contábeis:</strong> <?php echo $fiscal['contas_contabeis']; ?> - <strong>Localização:</strong> <?php echo $fiscal['localizacao']; ?> 
+            - <strong>Responsável:</strong> <?php echo $fiscal['responsavel']; ?> - <strong>Status:</strong> <?php echo $fiscal['status']; ?> - <strong>Observações:</strong> <?php echo $fiscal['observacoes']; ?>
+            - <?php echo "<a href='atualizarfiscal.php?id={$fiscal['id_fiscal']}'>Atualizar</a>" ?></li>
+        <?php endforeach; ?>
+        </ul>
+</fieldset>
+
 
 <h2>Excluir Fiscal</h2>
     <form method="post">

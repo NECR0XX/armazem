@@ -61,7 +61,8 @@ $comerciais = $comercialController->listarComercials();
             - <strong>Tipo de Transação:</strong> <?php echo $comercial['tipo_transacao']; ?> - <strong>Forma de Pagamento:</strong> <?php echo $comercial['forma_paga']; ?> 
             - <strong>Nota Fiscal:</strong> <?php echo $comercial['nota_fiscal']; ?> - <strong>Valor Total:</strong> <?php echo $comercial['valor_total']; ?> 
             - <strong>Canal de Venda:</strong> <?php echo $comercial['canal_venda']; ?> - <strong>Vendedor:</strong> <?php echo $comercial['vendedor']; ?> 
-            - <strong>Estado da Transação:</strong> <?php echo $comercial['estado_transacao']; ?></li>
+            - <strong>Estado da Transação:</strong> <?php echo $comercial['estado_transacao']; ?>
+            - <?php echo "<a href='atualizarcomercial.php?id={$comercial['id_comercial']}'>Atualizar</a>" ?></li>
         <?php endforeach; ?>
     </ul>
 </fieldset>
