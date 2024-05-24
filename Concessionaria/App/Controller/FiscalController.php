@@ -10,8 +10,8 @@ class FiscalController {
         $this->fiscalModel = new FiscalModel($pdo);
     }
 
-    public function criarFiscal($data, $descricao, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes) {
-        $this->fiscalModel->criarFiscal($data, $descricao, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes);
+    public function criarFiscal($data, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes) {
+        $this->fiscalModel->criarFiscal($data, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes);
     }
 
     public function listarFiscals() {
@@ -23,8 +23,8 @@ class FiscalController {
         include '../../Resources/Views/Fiscal/lista.php';
     }
 
-    public function atualizarFiscal($id_fiscal, $data, $descricao, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes) {
-        $this->fiscalModel->atualizarFiscal($id_fiscal, $data, $descricao, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes);
+    public function atualizarFiscal($id_fiscal, $data, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes) {
+        $this->fiscalModel->atualizarFiscal($id_fiscal, $data, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes);
     }
     
     public function excluirFiscal ($id_fiscal) {
