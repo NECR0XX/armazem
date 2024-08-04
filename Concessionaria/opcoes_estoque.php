@@ -52,15 +52,15 @@ $estoques = $estoqueController->listarEstoque();
     <legend><h2>Lista</h2></legend>
         <ul>
         <?php foreach ($estoques as $estoque): ?>
-            <li><strong>ID:</strong> <?php echo $estoque['id_estoque']; ?> - <strong>Data:</strong> <?php echo $estoque['data']; ?> - <strong>Descrição:</strong> <?php echo $estoque['descricao']; ?> 
-            - <strong>Valor:</strong> <?php echo $estoque['valor']; ?> - <strong>Tipo:</strong> <?php echo $estoque['tipo']; ?> - <strong>Cliente/Fornecedor:</strong> <?php echo $estoque['cliente_fornecedor']; ?> 
-            - <strong>Nota estoque:</strong> <?php echo $estoque['nota_fiscal']; ?> - <strong>Imposto:</strong> <?php echo $estoque['imposto']; ?> - <strong>Método de Pagamento:</strong> <?php echo $estoque['metodo_pagamento']; ?> 
-            - <strong>Código estoque:</strong> <?php echo $estoque['codigo_fiscal']; ?> - <strong>Contas Contábeis:</strong> <?php echo $estoque['contas_contabeis']; ?> - <strong>Localização:</strong> <?php echo $estoque['localizacao']; ?> 
-            - <strong>Responsável:</strong> <?php echo $estoque['responsavel']; ?> - <strong>Status:</strong> <?php echo $estoque['status']; ?> 
-            - <strong>Observações:</strong> <?php echo $estoque['observacoes']; ?></li>
+            <li><strong>ID:</strong> <?php echo $estoque['id_estoque']; ?> - <strong>Número de Referência:</strong> <?php echo $estoque['numero_referencia']; ?> - <strong>Categoria:</strong> <?php echo $estoque['categoria']; ?> - <strong>Quantidade:</strong> <?php echo $estoque['quantidade']; ?> 
+            - <strong>Preço Unitário:</strong> <?php echo $estoque['preco_unitario']; ?> - <strong>Fornecedor:</strong> <?php echo $estoque['fornecedor']; ?> - <strong>Localização:</strong> <?php echo $estoque['localizacao']; ?> 
+            - <strong>Reabastecimento Mínimo:</strong> <?php echo $estoque['reabastecimento_minimo']; ?> - <strong>Validade:</strong> <?php echo $estoque['validade']; ?> 
+            - <strong>Observações:</strong> <?php echo $estoque['observacoes']; ?> - <strong>Imagem:</strong> <?php echo $estoque['imagem']; ?>
+            - <?php echo "<a href='atualizarestoque.php?id={$estoque['id_estoque']}'>Atualizar</a>" ?></li>
         <?php endforeach; ?>
         </ul>
 </fieldset>
+
 
 
 <h2>Excluir Estoque</h2>

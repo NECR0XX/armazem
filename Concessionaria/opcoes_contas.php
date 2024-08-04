@@ -44,19 +44,24 @@ $contas = $contasController->listarcontas();
 </head>
 <body>
 <a href="opcoes.php">home</a>
-<!-- FINALIZADO -->
 <fieldset>
-        <legend><h2>Lista de contas</h2></legend>
-            <ul>
-            <?php foreach ($contas as $conta): ?>
-                <li>ID: <?php echo $conta['id_conta']; ?> - Fornecedores: <?php echo $conta['fornecedores']; ?> - Salários e Benefícios: <?php echo $conta['salarios_benef']; ?> 
-                - Aluguel: <?php echo $conta['aluguel']; ?> - Contas Públicas: <?php echo $conta['contas_publicas']; ?> - Impostos: <?php echo $conta['impostos']; ?> 
-                - Empréstimos: <?php echo $conta['emprestimos']; ?> - Manutenção: <?php echo $conta['manutencao']; ?> - Seguros: <?php echo $conta['seguros']; ?> 
-                - Marketing: <?php echo $conta['marketing']; ?> - Despesas Administrativas: <?php echo $conta['despesas_adm']; ?> - Logística: <?php echo $conta['logistica']; ?> 
-                - Pesquisa: <?php echo $conta['pesquisa']; ?> - Garantia: <?php echo $conta['garantia']; ?></li>
-            <?php endforeach; ?>
-            </ul>
-    </fieldset>
+    <legend><h2>Lista de contas</h2></legend>
+    <ul>
+        <?php foreach ($contas as $conta): ?>
+            <li><strong>ID:</strong> <?php echo $conta['id_conta']; ?> - <strong>Fornecedores:</strong> <?php echo $conta['fornecedores']; ?>  
+            - <strong>Salários e Benefícios:</strong> <?php echo $conta['salarios_benef']; ?> 
+            - <strong>Aluguel:</strong> <?php echo $conta['aluguel']; ?> - <strong>Contas Públicas:</strong> <?php echo $conta['contas_publicas']; ?> 
+            - <strong>Impostos:</strong> <?php echo $conta['impostos']; ?> - <strong>Empréstimos:</strong> <?php echo $conta['emprestimos']; ?> 
+            - <strong>Manutenção:</strong> <?php echo $conta['manutencao']; ?> - <strong>Seguros:</strong> <?php echo $conta['seguros']; ?> 
+            - <strong>Marketing:</strong> <?php echo $conta['marketing']; ?> - <strong>Despesas Administrativas:</strong> <?php echo $conta['despesas_adm']; ?> 
+            - <strong>Logística:</strong> <?php echo $conta['logistica']; ?> 
+            - <strong>Pesquisa:</strong> <?php echo $conta['pesquisa']; ?> - <strong>Garantia:</strong> <?php echo $conta['garantia']; ?>
+            - <?php echo "<a href='atualizarcontas.php?id={$conta['id_conta']}'>Atualizar</a>" ?>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+</fieldset>
+
 
     <h2>Excluir conta</h2>
     <form method="post">

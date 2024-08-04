@@ -7,10 +7,10 @@ class FiscalModel {
     }
 
     // Model para criar Fiscals
-    public function criarFiscal($data, $descricao, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes) {
-        $sql = "INSERT INTO fiscal (data, descricao, valor, tipo, cliente_fornecedor, nota_fiscal, imposto, metodo_pagamento, codigo_fiscal, contas_contabeis, localizacao, responsavel, status, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public function criarFiscal($data, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes) {
+        $sql = "INSERT INTO fiscal (data, valor, tipo, cliente_fornecedor, nota_fiscal, imposto, metodo_pagamento, codigo_fiscal, contas_contabeis, localizacao, responsavel, status, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$data, $descricao, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes]);
+        $stmt->execute([$data, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes]);
     }
 
     // Model para listar Fiscals
@@ -21,10 +21,10 @@ class FiscalModel {
     }
 
     // Model para atualizar Fiscals
-    public function atualizarFiscal($id_fiscal, $data, $descricao, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes){
-        $sql = "UPDATE fiscal SET  = ?, data = ?, descricao = ?, valor = ?, tipo = ?, cliente_fornecedor = ?, nota_fiscal = ?, imposto = ?, metodo_pagamento = ?, codigo_fiscal = ?, contas_contabeis = ?, localizacao = ?, responsavel = ?, status = ?, observacoes = ? WHERE id_fiscal = ?";
+    public function atualizarFiscal($id_fiscal, $data, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes){
+        $sql = "UPDATE fiscal SET  = ?, descricao = ?, valor = ?, tipo = ?, cliente_fornecedor = ?, nota_fiscal = ?, imposto = ?, metodo_pagamento = ?, codigo_fiscal = ?, contas_contabeis = ?, localizacao = ?, responsavel = ?, status = ?, observacoes = ? WHERE id_fiscal = ?";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$data, $descricao, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes, $id_fiscal]);
+        $stmt->execute([$data, $valor, $tipo, $cliente_fornecedor, $nota_fiscal, $imposto, $metodo_pagamento, $codigo_fiscal, $contas_contabeis, $localizacao, $responsavel, $status, $observacoes, $id_fiscal]);
     }
     
     // Model para deletar Fiscal
