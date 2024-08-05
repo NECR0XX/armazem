@@ -1,0 +1,83 @@
+// COUNTRIES
+<?php
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://apis.codante.io/olympic-games/countries");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
+
+    curl_close($ch);
+    $data_countries = json_decode($output, true);
+?>
+
+// DISCIPLINES
+<?php
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://apis.codante.io/olympic-games/disciplines");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
+
+    curl_close($ch);
+    $data_disciplines = json_decode($output, true);
+?>
+
+// COMPETITOR
+<?php
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://apis.codante.io/olympic-games/events?competitor=Simone%20Biles");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
+
+    curl_close($ch);
+    $data_competitor = json_decode($output, true);
+?>
+
+// DATE
+<?php
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://apis.codante.io/olympic-games/events?date=2024-07-26");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
+
+    curl_close($ch);
+    $data = json_decode($output, true);
+?>
+
+// FOOTBALL
+<?php
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://apis.codante.io/olympic-games/events?discipline=FBL&page=5");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
+
+    curl_close($ch);
+    $data_football = json_decode($output, true);
+?>
+
+// EVENTS
+<?php
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://apis.codante.io/olympic-games/events");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
+
+    curl_close($ch);
+    $data_events = json_decode($output, true);
+?>
+
+// VENUES
+<?php
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://apis.codante.io/olympic-games/venues");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
+
+    curl_close($ch);
+    $data_venues = json_decode($output, true);
+?>
